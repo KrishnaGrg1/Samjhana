@@ -23,8 +23,14 @@ const getUserfromAuthToken=async(req:IRequest,res:Response,next:NextFunction)=>{
     }catch(e:unknown){
         if(e instanceof Error){
             console.error("error:"+e)
+            res.status(401).json({
+                message:e.message
+            })
         }else{
             console.error("error"+e)
+            res.status(401).json({
+                message:e
+            })
         }
     }
 }

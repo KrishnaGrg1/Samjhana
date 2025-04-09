@@ -6,9 +6,9 @@ import userValidation from '../validations/auth'; // Import the validation schem
 const authRoute = Router();
 
 // This is where you define the POST request for user registration
-authRoute.post('/v1/signup', validate(userValidation.register), authController.register);
+authRoute.post('/signup', validate(userValidation.register), authController.register);
 
 
-authRoute.post('/v1/login', validate(userValidation.login), authController.login);
+authRoute.post('/login', validate(userValidation.login), authController.login);
 
 export default authRoute;
