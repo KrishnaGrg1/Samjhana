@@ -1,1 +1,1 @@
-{"root":["./src/index.ts","./src/model/model.ts"],"version":"5.8.3"}
+{"root":["./src/index.ts","./src/model/contentmodel.ts","./src/model/linkmodel.ts","./src/model/tagmodels.ts","./src/model/usermodel.ts"],"version":"5.8.3"}
