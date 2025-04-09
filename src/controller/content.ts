@@ -43,6 +43,12 @@ const viewContent=async(req:IRequest,res:Response,next:NextFunction)=>{
 const deleteContent=async(req:IRequest,res:Response,next:NextFunction)=>{
     try{
         const {contentId}=req.body;
+        const existingContent=await Content.findOne({_id:contentId});
+        if(!existingContent){
+            res.status(403).json({
+                message:"Content not found"
+            })
+        }
         await Content.deleteMany({_id:contentId,userId:req.userId});
         res.status(200).json({
             message:"Content Deleted successfully"
