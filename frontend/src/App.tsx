@@ -1,34 +1,38 @@
+
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Button } from './components/button'
+import { Card } from './components/card'
+import { CreateContentModel } from './components/createContent'
+import { PlusIcon } from './icons/PlusIcon'
+import { ShareIcon } from './icons/ShareIcon'
+import { SideBar } from './components/sidebar'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [modelOpen, setModelOpen] = useState(false)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div  >
+      <SideBar />
+      <div className='p-4 ml-72 h-screen bg-[#eeeeef]'>
+        <CreateContentModel open={modelOpen} onClose={() => {
+          setModelOpen(false)
+        }} />
+        <div className='flex justify-end gap-4'>
+          <Button onClick={() => { }} startIcon={<ShareIcon size='md' />}
+            size='sm' variant='secondary' text='Share Brain' />
+          <Button onClick={() => setModelOpen(true)} startIcon={<PlusIcon size='lg' />}
+            size='sm' variant='primary' text='Add Content' />
+        </div>
+        <div className='flex gap-6'>
+          <Card type='twitter' link='https://x.com/krishna_ba63631/status/1882126807144800363'
+            title='Twitter link' />
+          <Card type='youtube' link='https://www.youtube.com/watch?v=JfGD75vHWrU'
+            title='First Youtbe' />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
