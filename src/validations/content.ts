@@ -56,6 +56,22 @@ const contentValidation = {
             'string.regex': 'ContentID must be valid ObjectID',
         }),
     })
+  },
+  share:{
+    body:Joi.object({
+     share: Joi.boolean().required().messages({
+        "boolean.base": "Share must be a boolean",
+        "boolean.empty": "Share must be required"
+      })
+    })
+  },
+  sharelink:{
+    params:Joi.object({
+      sharelink:Joi.string().min(10).max(10).messages({
+        "string.empty":"ShareLink must be string",
+        "string.base":"Link must be string"
+      })
+    })
   }
 };
 

@@ -16,7 +16,8 @@ const linkSchema =new Schema<Ilink>({
     userId:[{
         type:Types.ObjectId,
         ref:"User",
-        required:true
+        required:true,
+        unique:true
     }]
 },{
     timestamps:true

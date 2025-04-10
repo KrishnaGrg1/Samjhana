@@ -12,16 +12,22 @@ contentRouter.post(
   validate(contentValidation.create),
   contentController.createContent
 );
+
 contentRouter.get(
   "/content",
   getUserfromAuthToken,
   contentController.viewContent
 );
+
 contentRouter.delete(
   "/content",
   getUserfromAuthToken,
   validate(contentValidation.delete),
   contentController.deleteContent
 );
+
+contentRouter.post("/brain/share", getUserfromAuthToken,validate(contentValidation.share),contentController.shareContent);
+
+contentRouter.post('/brain/:sharelink',getUserfromAuthToken,validate(contentValidation.sharelink),contentController.shareContentLink)
 
 export default contentRouter;

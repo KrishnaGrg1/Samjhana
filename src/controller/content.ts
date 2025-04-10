@@ -1,6 +1,10 @@
 import { NextFunction,Response,Request, json } from "express";
 import IRequest from "../middlewares/IRequest";
 import Content from "../model/contentModel";
+import Link from "../model/linkModel";
+import randomNumber from "../services/generateHash";
+import { hash } from "bcrypt";
+import User from "../model/userModel";
 
 
 const createContent=async(req:IRequest,res:Response,next:NextFunction)=>{
@@ -58,8 +62,71 @@ const deleteContent=async(req:IRequest,res:Response,next:NextFunction)=>{
     }
 }
 
+const shareContent=async(req:IRequest,res:Response,next:NextFunction)=>{
+    const {share}=req.body;
+    try{
+        if(share){
+            const existingLink=await Link.findOne({
+                userId:req.userId
+            })
+            
+
+            if(existingLink){
+                res.json({
+                    message:`${existingLink.hash}`
+                })
+                return 
+            }
+            const data=await Link.create({
+               hash:randomNumber(10),
+               userId:req.userId 
+            })
+            const hash=data.hash
+            res.status(200).json({
+                hash,
+                message:"Share-link created successfully",
+                
+            })
+        }else{
+            await Link.deleteOne({
+                userId:req.userId
+            })
+            res.json({
+                message:"removed link"
+            })
+        }
+        
+    }catch(e){
+        next(e)
+    }
+}
+
+const shareContentLink=async(req:IRequest,res:Response,next:NextFunction)=>{
+    const hash=req.params.sharelink;
+
+    try{
+        const existingLink=await Link.findOne({hash:hash});
+        if(!existingLink){
+            throw new Error("Sorry Invalid link")
+            return 
+        }
+        const content=await Content.find({
+            userId:existingLink.userId
+        })
+        const user=await User.findOne({_id:existingLink.userId})
+        res.status(200).json({
+            username:user?.username,
+            content:content,
+           
+        })
+    }
+    catch(e){
+        next(e)
+    }
+}
+
 const contentController={
-    createContent,viewContent,deleteContent
+    createContent,viewContent,deleteContent,shareContent,shareContentLink
 }
 
 export default contentController
