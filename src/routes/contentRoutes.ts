@@ -28,6 +28,6 @@ contentRouter.delete(
 
 contentRouter.post("/brain/share", getUserfromAuthToken,validate(contentValidation.share),contentController.shareContent);
 
-contentRouter.post('/brain/:sharelink',getUserfromAuthToken,validate(contentValidation.sharelink),contentController.shareContentLink)
+contentRouter.post('/brain/:sharelink',validate(contentValidation.sharelink),contentController.shareContentLink)
 
 export default contentRouter;

@@ -24,9 +24,21 @@ const createContent=async(req:IRequest,res:Response,next:NextFunction)=>{
         })
 
     }
-    catch(e){
-        next(e)
-    }
+    catch (e: unknown) {
+        if (e instanceof Error) {
+          console.error("Error occurred:", e.message);
+        //   next(e); // Forward to Express error handler
+        res.status(500).json({
+            message:e.message
+        })
+        } else {
+          console.error("Unexpected error:", e);
+        //   next(new Error("An unexpected error occurred"));
+        res.status(500).json({
+            message:e
+        })
+        }
+      }
 }
 
 
@@ -39,9 +51,21 @@ const viewContent=async(req:IRequest,res:Response,next:NextFunction)=>{
         res.json({
             content
         })
-    }catch(e){
-        next(e)
-    }
+    }catch (e: unknown) {
+        if (e instanceof Error) {
+          console.error("Error occurred:", e.message);
+        //   next(e); // Forward to Express error handler
+        res.status(500).json({
+            message:e.message
+        })
+        } else {
+          console.error("Unexpected error:", e);
+        //   next(new Error("An unexpected error occurred"));
+        res.status(500).json({
+            message:e
+        })
+        }
+      }
 }
 
 const deleteContent=async(req:IRequest,res:Response,next:NextFunction)=>{
@@ -57,9 +81,21 @@ const deleteContent=async(req:IRequest,res:Response,next:NextFunction)=>{
         res.status(200).json({
             message:"Content Deleted successfully"
         })
-    }catch(e){
-        next(e)
-    }
+    }catch (e: unknown) {
+        if (e instanceof Error) {
+          console.error("Error occurred:", e.message);
+        //   next(e); // Forward to Express error handler
+        res.status(500).json({
+            message:e.message
+        })
+        } else {
+          console.error("Unexpected error:", e);
+        //   next(new Error("An unexpected error occurred"));
+        res.status(500).json({
+            message:e
+        })
+        }
+      }
 }
 
 const shareContent=async(req:IRequest,res:Response,next:NextFunction)=>{
@@ -96,9 +132,21 @@ const shareContent=async(req:IRequest,res:Response,next:NextFunction)=>{
             })
         }
         
-    }catch(e){
-        next(e)
-    }
+    }catch (e: unknown) {
+        if (e instanceof Error) {
+          console.error("Error occurred:", e.message);
+        //   next(e); // Forward to Express error handler
+        res.status(500).json({
+            message:e.message
+        })
+        } else {
+          console.error("Unexpected error:", e);
+        //   next(new Error("An unexpected error occurred"));
+        res.status(500).json({
+            message:e
+        })
+        }
+      }
 }
 
 const shareContentLink=async(req:IRequest,res:Response,next:NextFunction)=>{
@@ -120,9 +168,21 @@ const shareContentLink=async(req:IRequest,res:Response,next:NextFunction)=>{
            
         })
     }
-    catch(e){
-        next(e)
-    }
+    catch (e: unknown) {
+        if (e instanceof Error) {
+          console.error("Error occurred:", e.message);
+        //   next(e); // Forward to Express error handler
+        res.status(500).json({
+            message:e.message
+        })
+        } else {
+          console.error("Unexpected error:", e);
+        //   next(new Error("An unexpected error occurred"));
+        res.status(500).json({
+            message:e
+        })
+        }
+      }
 }
 
 const contentController={

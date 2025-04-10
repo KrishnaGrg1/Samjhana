@@ -11,6 +11,7 @@ server.use(express.json());
 connectToDB().then((connectMessage)=>{
     console.log(connectMessage);
     server.use(mainRoutes)
+   
     server.listen(port,()=>{
         console.log("Server Started on Port: "+port)
     })
