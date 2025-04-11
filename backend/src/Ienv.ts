@@ -1,6 +1,14 @@
-interface Env {
-    [key: string]: string;
-  }
-  const env=process.env as Env
+import { config } from "dotenv";
 
-  export default env
+// Load environment variables
+config();
+
+interface Env {
+  MONGODB_URL: string;
+  [key: string]: string;
+}
+
+// Type assertion ensures process.env has the correct shape
+const env = process.env as Env;
+
+export default env;

@@ -7,6 +7,7 @@ export interface ButtonProps {
     onClick?: () => void;
     fullWidth?: boolean;
     loading?: boolean;
+    animation?:string
   }
   
   const variantStyle = {
@@ -31,6 +32,7 @@ export interface ButtonProps {
       endIcon,
       onClick,
       fullWidth,
+      animation = "hover:scale-105",
       loading = false,
     } = props;
   
@@ -42,6 +44,7 @@ export interface ButtonProps {
           ${sizeStyles[size]}
           ${fullWidth ? "w-full justify-center" : ""}
           ${loading ? "opacity-50 cursor-not-allowed" : "hover:opacity-90"}
+          ${animation}
         `}
         onClick={!loading ? onClick : undefined}
         disabled={loading}

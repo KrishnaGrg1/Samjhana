@@ -3,10 +3,11 @@ import express from 'express'
 import connectToDB from './connect';
 import env from './Ienv';
 import mainRoutes from './routes/mainRoutes';
-
+import cors from 'cors'
 const server=express();
 config();
 const port=env.PORT
+server.use(cors());
 server.use(express.json());
 connectToDB().then((connectMessage)=>{
     console.log(connectMessage);
