@@ -8,12 +8,13 @@ export default function Signup() {
         <h2 className="text-2xl font-semibold text-center mb-6">Create an Account</h2>
         
         <div className="space-y-4">
-          <Input placeholder="Username" label="Username" />
-          <Input placeholder="Password" label="Password" type="password" />
+          <Input placeholder="Username"  type="text" />
+          <Input placeholder="Password"   type="password" />
         </div>
 
         <div className="pt-6">
           <Button
+          size="lg"
             variant="primary"
             text="Sign Up"
             fullWidth={true} // should be a boolean

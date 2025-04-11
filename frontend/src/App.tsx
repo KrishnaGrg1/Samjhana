@@ -5,8 +5,8 @@ import Signup from "./pages/SignUp"
 function App() {
 
   return (
-    // <DashBoard />
-    <Signup />
+    <DashBoard />
+    // <Signup />
   )
 }
 
