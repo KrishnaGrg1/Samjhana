@@ -11,7 +11,7 @@ export function CreateContentModel({ open, onClose }: CreateContentModalProps) {
     return (
         <>
             {open && (
-                <div className="w-screen h-screen bg-slate-500 fixed top-0 left-0 opacity-70 flex justify-center items-center ">
+                <div className="w-screen h-screen bg-slate-500 fixed top-0 left-0 opacity-90 flex justify-center items-center ">
                     <div className="bg-white p-6 rounded-2xl w-[400px] shadow-lg relative">
                         <div className="flex justify-end">
                             <button onClick={onClose}>
