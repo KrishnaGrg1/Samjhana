@@ -53,7 +53,10 @@ export default function SignIn() {
 
         <div className="pt-4 text-center text-sm text-gray-500">
           Don't have an account?{" "}
-          <span className="text-[#3e38a7] cursor-pointer hover:underline">
+          <span onClick={()=>{
+            navigate('/signup')
+          }} className="text-[#3e38a7] cursor-pointer hover:underline">
+
             Sign Up
           </span>
         </div>

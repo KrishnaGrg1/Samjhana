@@ -53,7 +53,9 @@ export default function Signup() {
           />
         </div>
 
-        <div className="pt-4 text-center text-sm text-gray-500">
+        <div className="pt-4 text-center text-sm text-gray-500" onClick={()=>{
+          navigate('/signin')
+        }}>
           Already have an account? <span className="text-[#3e38a7] cursor-pointer hover:underline">Log in</span>
         </div>
       </div>
