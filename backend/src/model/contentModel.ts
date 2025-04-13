@@ -4,7 +4,7 @@ import { Schema, model, Types,Document } from "mongoose";
 // Define the Content interface for TypeScript typing
 interface IContent extends Document {
     link?: string;
-    type: "image" | "video" | "article" | "audio";
+    type: string;
     title: string;
     tags: Types.ObjectId[];
     userId:Types.ObjectId[];
@@ -18,7 +18,6 @@ const contentSchema = new Schema<IContent>({
   },
   type: {
     type: String,
-    enum: ["image", "video", "article", "audio"], 
     required: true
   },
   title: {

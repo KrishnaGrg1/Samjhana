@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import '../App.css'
 import { Button } from '../components/button'
 import { Card } from '../components/card'
@@ -6,10 +6,17 @@ import { CreateContentModel } from '../components/createContent'
 import { PlusIcon } from '../icons/PlusIcon'
 import { ShareIcon } from '../icons/ShareIcon'
 import { SideBar } from '../components/sidebar'
+import { UseContent } from '../hooks/useContent'
+import { ref } from 'process'
 
 export function DashBoard() {
   const [modelOpen, setModelOpen] = useState(false)
+  const {content,refresh} = UseContent();
 
+
+  useEffect(()=>{
+    refresh()
+  },[modelOpen])
   return (
     <div className="flex">
       <SideBar />
@@ -23,7 +30,7 @@ export function DashBoard() {
           <h1 className="text-2xl font-semibold text-gray-800">All Notes</h1>
           <div className="flex gap-4">
             <Button
-              onClick={() => {}}
+              onClick={() => { }}
               startIcon={<ShareIcon size="md" />}
               size="sm"
               variant="secondary"
@@ -43,11 +50,16 @@ export function DashBoard() {
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card
-            type="twitter"
-            link="https://x.com/krishna_ba63631/status/1882126807144800363"
-            title="Twitter Post"
-          />
+
+          {content?.map(({ type, link, title }, index) => (
+            <Card
+              
+              type={type}
+              link={link}
+              title={title}
+            />
+          ))}
+
           <Card
             type="youtube"
             link="https://www.youtube.com/watch?v=JfGD75vHWrU"

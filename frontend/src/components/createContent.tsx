@@ -8,7 +8,7 @@ interface CreateContentModalProps {
     open: boolean;
     onClose: () => void;
 }
-enum ContentType {
+export enum ContentType {
     YouTube = "youtube",
     Twitter = "twitter"
 }
@@ -22,14 +22,14 @@ export function CreateContentModel({ open, onClose }: CreateContentModalProps) {
         const BackendUrl=BACKEND_URL;
 
     await axios.post(`${BackendUrl}/api/v1/content`,{
-            title,link,type
+            title,link,type,
         },{
             headers:{
                 "Authorization":localStorage.getItem("token")
             }
         }).then((res)=>{
-            console.log("Sucessfully submited");
-            alert("Addede successfully")
+            console.log("Sucessfully submited"+res);
+            alert("Added successfully")
         }).catch( (err) =>{
             if (axios.isAxiosError(err)) {
               console.error("Axios error:", err.response?.data || err.message);

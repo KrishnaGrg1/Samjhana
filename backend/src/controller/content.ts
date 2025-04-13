@@ -10,7 +10,8 @@ import User from "../model/userModel";
 const createContent=async(req:IRequest,res:Response,next:NextFunction)=>{
     try{
         const {link,type,title,tag}=req.body;
-
+        console.log(req.userId)
+        
         const newContent=await Content.create({
             link:link,
             title:title,

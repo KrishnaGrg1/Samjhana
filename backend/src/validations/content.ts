@@ -11,12 +11,10 @@ const contentValidation = {
         "string.base": "Link must be a string"
       }),
       type: Joi.string()
-        .valid("image", "video", "article", "audio")
         .required()
         .messages({
           "string.base": "Type must be a string",
-          "any.only":
-            'Type must be one of "image", "video", "article", or "audio"'
+          "string.empty": "Type must be required"
         }),
       title: Joi.string().required().messages({
         "string.base": "Title must be a string",
@@ -32,20 +30,12 @@ const contentValidation = {
         .messages({
           "array.base": "Tags must be an array",
           "array.items": "Each tag must be a valid ObjectId"
-        }),
-      userId: Joi.array()
-        .items(
-          Joi.string()
-            .regex(/^[0-9a-fA-F]{24}$/)
-            .required()
-        )
-        .required()
-        .messages({
-          "array.base": "UserId must be an array of ObjectIds",
-          "array.items": "Each userId must be a valid ObjectId"
         })
+      
+     
     })
-  },
+  }
+  ,
   delete: {
     body: Joi.object({
       contentId: Joi.string()
