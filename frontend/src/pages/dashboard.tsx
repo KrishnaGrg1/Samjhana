@@ -51,7 +51,7 @@ export function DashBoard() {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-          {content?.map(({ type, link, title }, index) => (
+          {content?.map(({ type, link, title }) => (
             <Card
             
               type={type}
