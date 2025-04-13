@@ -7,7 +7,7 @@ import { PlusIcon } from '../icons/PlusIcon'
 import { ShareIcon } from '../icons/ShareIcon'
 import { SideBar } from '../components/sidebar'
 import { UseContent } from '../hooks/useContent'
-import { ref } from 'process'
+
 
 export function DashBoard() {
   const [modelOpen, setModelOpen] = useState(false)
@@ -53,7 +53,7 @@ export function DashBoard() {
 
           {content?.map(({ type, link, title }, index) => (
             <Card
-              
+            
               type={type}
               link={link}
               title={title}
