@@ -31,6 +31,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
         });
     } catch (error) {
         next(error); // Pass errors to the error-handling middleware
+        
     }
 };
 

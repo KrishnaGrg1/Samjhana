@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import env from "./Ienv"; // Make sure file name matches
 import { config } from "dotenv";
 config()
+
+
 const connectToDB = async (): Promise<string> => {
   const mongoDBUrl = process.env.MONGODB_URL;
  

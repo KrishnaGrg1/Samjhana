@@ -4,7 +4,7 @@ import { config } from "dotenv";
 config();
 
 interface Env {
-  MONGODB_URL: string;
+  
   [key: string]: string;
 }
 
